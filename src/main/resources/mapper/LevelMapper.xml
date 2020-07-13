@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.three.shop.mapper.LevelMapper">
+  <resultMap id="BaseResultMap" type="com.three.shop.domain.entity.Level">
+    <!--@mbg.generated-->
+    <!--@Table `level`-->
+    <id column="level_id" jdbcType="INTEGER" property="levelId" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    level_id, icon, `name`, discount, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `level`
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `level`
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="level_id" keyProperty="levelId" parameterType="com.three.shop.domain.entity.Level" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `level` (icon, `name`, discount, 
+      create_time)
+    values (#{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{discount,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="level_id" keyProperty="levelId" parameterType="com.three.shop.domain.entity.Level" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `level`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.three.shop.domain.entity.Level">
+    <!--@mbg.generated-->
+    update `level`
+    <set>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.three.shop.domain.entity.Level">
+    <!--@mbg.generated-->
+    update `level`
+    set icon = #{icon,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </update>
+</mapper>
